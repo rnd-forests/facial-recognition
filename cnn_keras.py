@@ -9,7 +9,7 @@ import functools
 import config
 from shared import load_preprocessed_faces
 
-# Test accuracy: 0.819569672131
+# Accuracy: 82%
 
 epochs = 100
 size = config.IMAGE_SIZE

@@ -4,6 +4,7 @@ import tensorflow as tf
 import config
 from shared import load_faces, reset_graph, create_summary_writer, neuron_layer
 
+# Accuracy: 72%
 
 X_train, X_test, y_train, y_test = load_faces()
 
