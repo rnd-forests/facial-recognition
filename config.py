@@ -1,6 +1,6 @@
 TRAIN_DIR = 'data/Face/Train'
 TEST_DIR = 'data/Face/Test'
-IMAGE_SIZE = 96
+IMAGE_SIZE = 120
 N_CLASSES = 27
 
 DNN_SUMMARY_DIR = 'summary/dnn'

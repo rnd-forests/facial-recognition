@@ -1,4 +1,5 @@
 import cv2
+import keras
 import numpy as np
 import tensorflow as tf
 from sklearn.preprocessing import LabelEncoder
@@ -58,7 +59,7 @@ def load_minist():
     return X_train, X_test, y_train, y_test
 
 
-def load_faces(zipfile="data", channels=1):
+def load_faces(zipfile="faces", channels=1):
     def load_images(dir):
         X = []
         y = []
@@ -97,3 +98,26 @@ def load_faces(zipfile="data", channels=1):
     data = np.load(zipfile_with_ext)
 
     return data['X_train'], data['X_test'], data['y_train'], data['y_test']
+
+
+def load_preprocessed_faces(zipfile="faces", channels=1):
+    size = config.IMAGE_SIZE
+    n_classes = config.N_CLASSES
+
+    X_train, X_test, y_train, y_test = load_faces(zipfile, channels)
+
+    print("X_train:", X_train.shape)
+    print("y_train:", y_train.shape)
+    print("X_test:", X_test.shape)
+    print("y_test:", y_test.shape)
+
+    X_train = X_train.astype('float32')
+    X_train /= 255
+    X_train = X_train.reshape(X_train.shape[0], size, size, 3)
+
+    X_test = X_test.astype('float32')
+    X_test /= 255
+    X_test = X_test.reshape(X_test.shape[0], size, size, 3)
+
+    y_train = keras.utils.to_categorical(y_train, n_classes)
+    y_test = keras.utils.to_categorical(y_test, n_classes)

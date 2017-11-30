@@ -40,19 +40,10 @@ with tf.name_scope("cross_entropy"):
     tf.summary.scalar("loss", loss)
 
 with tf.name_scope("train"):
-    # The initial learning rate
     initial_learning_rate = 0.05
-
-    # The number of training steps to reduce the learning rate
     decay_steps = 10000
-
-    # The learning rate reducing ratio
     decay_rate = 1 / 10
-
-    # Create a nontrainable variable to keep track of the current training iteration number
     global_step = tf.Variable(0, trainable=False, name="global_step")
-
-    # Decayed learning rate (exponential scheduling)
     learning_rate = tf.train.exponential_decay(initial_learning_rate, global_step, decay_steps, decay_rate)
 
     optimizer = tf.train.MomentumOptimizer(learning_rate, momentum=0.9)
