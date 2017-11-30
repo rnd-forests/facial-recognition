@@ -7,7 +7,7 @@ from keras.preprocessing.image import ImageDataGenerator
 import config
 from shared import load_preprocessed_faces
 
-# Test accuracy: 0.941495901639
+# Accuracy: 96.74%
 
 epochs = 100
 size = config.IMAGE_SIZE
