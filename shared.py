@@ -121,3 +121,5 @@ def load_preprocessed_faces(zipfile="faces", channels=1):
 
     y_train = keras.utils.to_categorical(y_train, n_classes)
     y_test = keras.utils.to_categorical(y_test, n_classes)
+
+    return X_train, X_test, y_train, y_test
